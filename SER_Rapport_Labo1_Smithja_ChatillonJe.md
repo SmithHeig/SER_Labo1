@@ -58,6 +58,8 @@ Le champs *photo* pour les films est uniquement composé attributs interne qui e
 
 Le sexe des acteurs doit lui aussi être donné par un attributs interne et peut être uniquement *Masculin* ou *Feminin* et est obligatoire.
 
+Nous avons décidé de mettre les *id* en tant que élément sans précisé qu'il soit unique ou id car si on fait ceci, on se retrouve bloquer comme par exemple: "un acteur ne pourra pas participé à plusieurs film car l'id sera déjà utilisé". Ce problème est du à notre conception qui est de favorisé la visibilité à la redondance.
+
 ## Exemple XML
 
 Pour cette exemple, nous avons créé les scéances pour le film *Iron Man 3* et *Good Morning England*. 
