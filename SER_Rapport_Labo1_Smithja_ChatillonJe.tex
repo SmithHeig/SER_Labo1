@@ -1,0 +1,466 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\date{}
+
+\begin{document}
+
+\section{SER - Rapport Labo 1}\label{header-n0}
+
+\tableofcontents
+
+\newpage
+\subsection{Introduction}\label{header-n2}
+
+Ce laboratoire avait pour but de nous faire créé une DTD et sont fichier
+XML. La conception à nécessité une reflection sur la \emph{redondance}
+et la \emph{visibilité} du fichier.
+
+Par la suite nous avons du créé un fichier JSON contenant un jeu de
+donnée plus faible.
+
+\subsection{Graphe}\label{header-n7}
+
+\begin{figure}
+\centering
+\includegraphics{/home/james/Documents/HEIG-VD/Cours/SER/Labos/Labo1/SER_Labo1/UML.png}
+\caption{}
+\end{figure}
+
+\subsection{DTD}\label{header-n10}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{<!ELEMENT} \FunctionTok{projections} \DecValTok{(}\FunctionTok{projection}\DecValTok{)}\FloatTok{*}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{projection} \DecValTok{(}\FunctionTok{id}\DecValTok{,} \FunctionTok{date}\DecValTok{,} \FunctionTok{salle}\DecValTok{,} \FunctionTok{film}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{film} \DecValTok{(}\FunctionTok{id}\DecValTok{,} \FunctionTok{titre}\DecValTok{,} \FunctionTok{synopsis}\DecValTok{,} \FunctionTok{dur}\NormalTok{é}\FunctionTok{e}\DecValTok{,} \DecValTok{(}\FunctionTok{critique}\FloatTok{*}\DecValTok{),} \DecValTok{(}\FunctionTok{genre}\FloatTok{*}\DecValTok{),} \DecValTok{(}\FunctionTok{mot-cle}\FloatTok{*}\DecValTok{),} \DecValTok{(}\FunctionTok{langages}\FloatTok{*}\DecValTok{),} \FunctionTok{photo}\DecValTok{,} \DecValTok{(}\FunctionTok{participent}\FloatTok{*}\DecValTok{))}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{participent} \DecValTok{(}\FunctionTok{id}\DecValTok{,}\FunctionTok{personnage}\DecValTok{,} \FunctionTok{acteur}\DecValTok{,} \DecValTok{(}\FunctionTok{role}\FloatTok{*}\DecValTok{),} \FunctionTok{place}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{acteur} \DecValTok{(}\FunctionTok{nom}\DecValTok{,} \FunctionTok{nomNaissance}\DecValTok{,} \FunctionTok{biographie}\DecValTok{,} \FunctionTok{dateNaissance}\DecValTok{,} \FunctionTok{dateDeces}\FloatTok{?}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{photo} \KeywordTok{EMPTY}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{date} \DecValTok{(}\FunctionTok{jour}\DecValTok{,}\FunctionTok{mois}\DecValTok{,}\FunctionTok{annee}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{salle} \DecValTok{(}\FunctionTok{id}\DecValTok{,} \FunctionTok{noSalle}\DecValTok{,} \FunctionTok{taille}\DecValTok{)}\DataTypeTok{>}
+
+\DataTypeTok{<!ELEMENT} \FunctionTok{id} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{titre} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{synopsis} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{dur}\NormalTok{é}\FunctionTok{e} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{critique} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{genre} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{mot-cle} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{langages} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{personnage} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{role} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{place} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{nom} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{nomNaissance} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{jour} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{mois} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{annee} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{noSalle} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{taille} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{biographie} \DecValTok{(}\KeywordTok{#PCDATA}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{dateNaissance} \DecValTok{(}\FunctionTok{date}\DecValTok{)}\DataTypeTok{>}
+\DataTypeTok{<!ELEMENT} \FunctionTok{dateDeces} \DecValTok{(}\FunctionTok{date}\DecValTok{)}\DataTypeTok{>}
+
+\DataTypeTok{<!ATTLIST} \FunctionTok{photo} \FunctionTok{url} \KeywordTok{CDATA} \KeywordTok{#REQUIRED}\DataTypeTok{>} 
+\DataTypeTok{<!ATTLIST} \FunctionTok{acteur} \FunctionTok{sexe} \DecValTok{(}\FunctionTok{Masculin}\DecValTok{|}\FunctionTok{Feminin}\DecValTok{)} \KeywordTok{#REQUIRED}\DataTypeTok{>}
+\end{Highlighting}
+\end{Shaded}
+
+Nous avons conçu cette DTD de façon à ce que notre fichier XML soit
+simple et lisible. Il comportera des redondance mais facilite l'écriture
+et la lecture du fichier \emph{brute}.
+
+Tous les éléments sont composés de sous élément et sont finalement des
+élément comportants un attributs (\#PCDATA).
+
+L'élément date est utilisé à plusieurs reprise pour la decès, la
+naissance et les dates de scéance.
+
+Le champs \emph{photo} pour les films est uniquement composé attributs
+interne qui est un \emph{url} qui est obligatoire.
+
+Le sexe des acteurs doit lui aussi être donné par un attributs interne
+et peut être uniquement \emph{Masculin} ou \emph{Feminin} et est
+obligatoire.
+
+Nous avons décidé de mettre les \emph{id} en tant que élément sans
+précisé qu'il soit unique ou id car si on fait ceci, on se retrouve
+bloquer comme par exemple: "un acteur ne pourra pas participé à
+plusieurs film car l'id sera déjà utilisé". Ce problème est du à notre
+conception qui est de favorisé la visibilité à la redondance.
+
+\subsection{Exemple XML}\label{header-n24}
+
+Pour cette exemple, nous avons créé les scéances pour le film \emph{Iron
+Man 3} et \emph{Good Morning England}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<?xml} \NormalTok{version="1.0" }\KeywordTok{?>}
+\DataTypeTok{<!DOCTYPE }\NormalTok{projections SYSTEM "cinema.dtd"}\DataTypeTok{>}
+\KeywordTok{<projections>}
+  \CommentTok{<!--Zero or more repetitions:-->}
+  \KeywordTok{<projection>}
+    \KeywordTok{<id>}\NormalTok{1}\KeywordTok{</id>}
+    \KeywordTok{<date>}
+      \KeywordTok{<jour>}\NormalTok{5}\KeywordTok{</jour>}
+      \KeywordTok{<mois>}\NormalTok{3}\KeywordTok{</mois>}
+      \KeywordTok{<annee>}\NormalTok{2018}\KeywordTok{</annee>}
+    \KeywordTok{</date>}
+    \KeywordTok{<salle>}
+      \KeywordTok{<id>}\NormalTok{1}\KeywordTok{</id>}
+      \KeywordTok{<noSalle>}\NormalTok{1}\KeywordTok{</noSalle>}
+      \KeywordTok{<taille>}\NormalTok{40}\KeywordTok{</taille>}
+    \KeywordTok{</salle>}
+    \KeywordTok{<film>}
+      \KeywordTok{<id>}\NormalTok{164}\KeywordTok{</id>}
+      \KeywordTok{<titre>}\NormalTok{Good Morning England}\KeywordTok{</titre>}
+      \KeywordTok{<synopsis>}\NormalTok{Voila voila}\KeywordTok{</synopsis>}
+      \KeywordTok{<dur}\ErrorTok{ée}\KeywordTok{>}\NormalTok{120}\KeywordTok{</dur}\ErrorTok{ée}\KeywordTok{>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<critique>}\NormalTok{Très bien}\KeywordTok{</critique>}
+      \KeywordTok{<critique>}\NormalTok{Bien aimé}\KeywordTok{</critique>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<genre>}\NormalTok{Comédie Musical}\KeywordTok{</genre>}
+      \KeywordTok{<genre>}\NormalTok{Drama}\KeywordTok{</genre>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<mot-cle>}\NormalTok{England}\KeywordTok{</mot-cle>}
+      \KeywordTok{<mot-cle>}\NormalTok{Musique}\KeywordTok{</mot-cle>}
+      \KeywordTok{<mot-cle>}\NormalTok{Rock}\KeywordTok{</mot-cle>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<langages>}\NormalTok{Anglais}\KeywordTok{</langages>}
+      \KeywordTok{<langages>}\NormalTok{Français}\KeywordTok{</langages>}
+      \KeywordTok{<photo}\OtherTok{ url=}\StringTok{"www.google.ch/goodmornigengland.png"}\KeywordTok{/>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<participent>}
+        \KeywordTok{<id>}\NormalTok{170}\KeywordTok{</id>}
+        \KeywordTok{<personnage>}\NormalTok{Carl}\KeywordTok{</personnage>}
+        \KeywordTok{<acteur}\OtherTok{ sexe=}\StringTok{"Masculin"}\KeywordTok{>}
+          \KeywordTok{<nom>}\NormalTok{Tom Sturridge}\KeywordTok{</nom>}
+          \KeywordTok{<nomNaissance>}\NormalTok{Tom Sturridge}\KeywordTok{</nomNaissance>}
+          \KeywordTok{<biographie>}\NormalTok{Tom Sturridge né le 21 décembre 1985 à Lambeth en Angleterre,}
+              \NormalTok{est un acteur anglais, connu pour avoir joué dans Adorable Julia, Like}
+              \NormalTok{Minds, et pour son rôle dans Good Morning England.}\KeywordTok{</biographie>}
+          \KeywordTok{<dateNaissance>}
+            \KeywordTok{<date>}
+              \KeywordTok{<jour>}\NormalTok{21}\KeywordTok{</jour>}
+              \KeywordTok{<mois>}\NormalTok{12}\KeywordTok{</mois>}
+              \KeywordTok{<annee>}\NormalTok{1985}\KeywordTok{</annee>}
+            \KeywordTok{</date>}
+          \KeywordTok{</dateNaissance>}
+        \KeywordTok{</acteur>}
+        \CommentTok{<!--Zero or more repetitions:-->}
+        \KeywordTok{<role>}\NormalTok{Personnage principale}\KeywordTok{</role>}
+        \KeywordTok{<role>}\NormalTok{Petit paumé}\KeywordTok{</role>}
+        \KeywordTok{<place>}\NormalTok{1}\KeywordTok{</place>}
+      \KeywordTok{</participent>}
+      \KeywordTok{<participent>}
+        \KeywordTok{<id>}\NormalTok{999}\KeywordTok{</id>}
+        \KeywordTok{<personnage>}\NormalTok{le Compte}\KeywordTok{</personnage>}
+        \KeywordTok{<acteur}\OtherTok{ sexe=}\StringTok{"Masculin"}\KeywordTok{>}
+          \KeywordTok{<nom>}\NormalTok{Philip Seymour Hoffman }\KeywordTok{</nom>}
+          \KeywordTok{<nomNaissance>}\NormalTok{Philip Seymour Hoffman }\KeywordTok{</nomNaissance>}
+          \KeywordTok{<biographie>}\NormalTok{Il amorce sa carrière d'acteur en 1991 et, l'année suivante, }
+            \NormalTok{commence à apparaître dans des films. Il acquiert une certaine }
+            \NormalTok{reconnaissance de son travail pour ses seconds rôles dans Le Temps d'un }
+            \NormalTok{week-end (1992), Twister (1996), Boogie Nights (1997), The Big Lebowski }
+            \NormalTok{(1998), Docteur Patch (1998), Magnolia (1999), Le Talentueux Mr Ripley (1999),}
+            \NormalTok{Presque célèbre (2000), Dragon Rouge (2002), La 25e Heure (2002) et Retour à }
+            \NormalTok{Cold Mountain (2003).}\KeywordTok{</biographie>}
+          \KeywordTok{<dateNaissance>}
+            \KeywordTok{<date>}
+              \KeywordTok{<jour>}\NormalTok{23}\KeywordTok{</jour>}
+              \KeywordTok{<mois>}\NormalTok{07}\KeywordTok{</mois>}
+              \KeywordTok{<annee>}\NormalTok{1967}\KeywordTok{</annee>}
+            \KeywordTok{</date>}
+          \KeywordTok{</dateNaissance>}
+          \KeywordTok{<dateDeces>}
+              \KeywordTok{<date>}
+                  \KeywordTok{<jour>}\NormalTok{2}\KeywordTok{</jour>}
+                  \KeywordTok{<mois>}\NormalTok{02}\KeywordTok{</mois>}
+                  \KeywordTok{<annee>}\NormalTok{2014}\KeywordTok{</annee>}
+              \KeywordTok{</date>}
+          \KeywordTok{</dateDeces>}
+        \KeywordTok{</acteur>}
+        \CommentTok{<!--Zero or more repetitions:-->}
+        \KeywordTok{<role>}\NormalTok{Dj}\KeywordTok{</role>}
+        \KeywordTok{<role>}\NormalTok{Habitant du bateau}\KeywordTok{</role>}
+        \KeywordTok{<place>}\NormalTok{2}\KeywordTok{</place>}
+      \KeywordTok{</participent>}
+    \KeywordTok{</film>}
+  \KeywordTok{</projection>}
+  \CommentTok{<!--Zero or more repetitions:-->}
+  \KeywordTok{<projection>}
+    \KeywordTok{<id>}\NormalTok{2}\KeywordTok{</id>}
+    \KeywordTok{<date>}
+      \KeywordTok{<jour>}\NormalTok{6}\KeywordTok{</jour>}
+      \KeywordTok{<mois>}\NormalTok{3}\KeywordTok{</mois>}
+      \KeywordTok{<annee>}\NormalTok{2018}\KeywordTok{</annee>}
+    \KeywordTok{</date>}
+    \KeywordTok{<salle>}
+      \KeywordTok{<id>}\NormalTok{2}\KeywordTok{</id>}
+      \KeywordTok{<noSalle>}\NormalTok{2}\KeywordTok{</noSalle>}
+      \KeywordTok{<taille>}\NormalTok{38}\KeywordTok{</taille>}
+    \KeywordTok{</salle>}
+    \KeywordTok{<film>}
+      \KeywordTok{<id>}\NormalTok{268}\KeywordTok{</id>}
+      \KeywordTok{<titre>}\NormalTok{Iron Man 3}\KeywordTok{</titre>}
+      \KeywordTok{<synopsis>}\NormalTok{C'est ca}\KeywordTok{</synopsis>}
+      \KeywordTok{<dur}\ErrorTok{ée}\KeywordTok{>}\NormalTok{145}\KeywordTok{</dur}\ErrorTok{ée}\KeywordTok{>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<critique>}\NormalTok{Bof}\KeywordTok{</critique>}
+      \KeywordTok{<critique>}\NormalTok{Super bien}\KeywordTok{</critique>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<genre>}\NormalTok{Action}\KeywordTok{</genre>}
+      \KeywordTok{<genre>}\NormalTok{Fiction}\KeywordTok{</genre>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<mot-cle>}\NormalTok{Iron}\KeywordTok{</mot-cle>}
+      \KeywordTok{<mot-cle>}\NormalTok{Marvel}\KeywordTok{</mot-cle>}
+      \KeywordTok{<mot-cle>}\NormalTok{Man}\KeywordTok{</mot-cle>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<langages>}\NormalTok{Anglais}\KeywordTok{</langages>}
+      \KeywordTok{<langages>}\NormalTok{Français}\KeywordTok{</langages>}
+      \KeywordTok{<photo}\OtherTok{ url=}\StringTok{"http://www.lavisqteam.fr/wp-content/uploads/2013/10/iron-man-3-poster.jpg"}\KeywordTok{/>}
+      \CommentTok{<!--Zero or more repetitions:-->}
+      \KeywordTok{<participent>}
+        \KeywordTok{<id>}\NormalTok{12}\KeywordTok{</id>}
+        \KeywordTok{<personnage>}\NormalTok{Tony Stark}\KeywordTok{</personnage>}
+        \KeywordTok{<acteur}\OtherTok{ sexe=}\StringTok{"Masculin"}\KeywordTok{>}
+          \KeywordTok{<nom>}\NormalTok{Robert Downey Jr.}\KeywordTok{</nom>}
+          \KeywordTok{<nomNaissance>}\NormalTok{Robert Downey Jr.}\KeywordTok{</nomNaissance>}
+          \KeywordTok{<biographie>}\NormalTok{Révélé à la fin des années 1980, il est nommé à l'Oscar du meilleur }
+            \NormalTok{acteur en 1993 pour son interprétation de Charlie Chaplin dans Chaplin, mais}
+            \NormalTok{connaît ensuite un passage à vide du fait de graves problèmes de drogue et }
+            \NormalTok{d'alcool. Rétabli, il opère un retour en force et devient, en 2008, }
+            \NormalTok{l'interprète d'Iron Man dans les films des studios Marvel. Ce rôle, qu'il }
+            \NormalTok{interprète dans la trilogie Iron Man ainsi que dans Avengers, Avengers : L'Ère}
+            \NormalTok{d'Ultron, Captain America: Civil War, Spider-Man: Homecoming, Avengers: }
+            \NormalTok{Infinity War et Avengers 4 lui vaut de devenir l'un des acteurs les mieux }
+            \NormalTok{payés au monde}\KeywordTok{</biographie>}
+          \KeywordTok{<dateNaissance>}
+            \KeywordTok{<date>}
+              \KeywordTok{<jour>}\NormalTok{4}\KeywordTok{</jour>}
+              \KeywordTok{<mois>}\NormalTok{4}\KeywordTok{</mois>}
+              \KeywordTok{<annee>}\NormalTok{1965}\KeywordTok{</annee>}
+            \KeywordTok{</date>}
+          \KeywordTok{</dateNaissance>}
+        \KeywordTok{</acteur>}
+        \CommentTok{<!--Zero or more repetitions:-->}
+        \KeywordTok{<role>}\NormalTok{Personnage principale}\KeywordTok{</role>}
+        \KeywordTok{<place>}\NormalTok{1}\KeywordTok{</place>}
+      \KeywordTok{</participent>}
+      \KeywordTok{<participent>}
+        \KeywordTok{<id>}\NormalTok{1024}\KeywordTok{</id>}
+        \KeywordTok{<personnage>}\NormalTok{Pepper Potts}\KeywordTok{</personnage>}
+        \KeywordTok{<acteur}\OtherTok{ sexe=}\StringTok{"Feminin"}\KeywordTok{>}
+          \KeywordTok{<nom>}\NormalTok{Gwyneth Paltrow}\KeywordTok{</nom>}
+          \KeywordTok{<nomNaissance>}\NormalTok{Gwyneth Paltrow}\KeywordTok{</nomNaissance>}
+          \KeywordTok{<biographie>}\NormalTok{Est une actrice et chanteuse américaine née le 27 septembre 1972 à }
+            \NormalTok{Los Angeles }\KeywordTok{</biographie>}
+          \KeywordTok{<dateNaissance>}
+            \KeywordTok{<date>}
+              \KeywordTok{<jour>}\NormalTok{27}\KeywordTok{</jour>}
+              \KeywordTok{<mois>}\NormalTok{9}\KeywordTok{</mois>}
+              \KeywordTok{<annee>}\NormalTok{1972}\KeywordTok{</annee>}
+            \KeywordTok{</date>}
+          \KeywordTok{</dateNaissance>}
+        \KeywordTok{</acteur>}
+        \CommentTok{<!--Zero or more repetitions:-->}
+        \KeywordTok{<role>}\NormalTok{Femme de Tony Stark}\KeywordTok{</role>}
+        \KeywordTok{<role>}\NormalTok{Secrétaire de Stark industry}\KeywordTok{</role>}
+        \KeywordTok{<place>}\NormalTok{2}\KeywordTok{</place>}          
+      \KeywordTok{</participent>}
+    \KeywordTok{</film>}
+  \KeywordTok{</projection>}
+\KeywordTok{</projections>}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Résultat verification avec Echo10}\label{header-n28}
+
+\begin{figure}
+\centering
+\includegraphics{/home/james/Documents/HEIG-VD/Cours/SER/Labos/Labo1/SER_Labo1/ValidationWithEcho10.png}
+\caption{}
+\end{figure}
+
+\subsection{JSON}\label{header-n31}
+
+Nous avons décidé de concerver une structure stricte même pour un petit
+jeu de donnée pour pouvoir facilement atteindre des données.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}\DataTypeTok{"projections"}\FunctionTok{:}
+	\FunctionTok{\{}
+	  \DataTypeTok{"projection"}\FunctionTok{:}\OtherTok{[}
+	    \FunctionTok{\{}
+	     \DataTypeTok{"date"}\FunctionTok{:}
+  	   \FunctionTok{\{}
+  	    \DataTypeTok{"jour"}\FunctionTok{:} \DecValTok{5}\FunctionTok{,}
+  	    \DataTypeTok{"mois"}\FunctionTok{:} \DecValTok{3}\FunctionTok{,}
+  	    \DataTypeTok{"année"}\FunctionTok{:} \DecValTok{2018}
+  	   \FunctionTok{\},}
+  	   \DataTypeTok{"film"}\FunctionTok{:}
+	     \FunctionTok{\{}
+	      \DataTypeTok{"titre"}\FunctionTok{:} \StringTok{"Good Morning England"}\FunctionTok{,}
+	      \DataTypeTok{"acteurs"}\FunctionTok{:}
+	        \OtherTok{[}
+	          \FunctionTok{\{}
+	            \DataTypeTok{"Nom"}\FunctionTok{:}\StringTok{"Tom Sturridge"}\FunctionTok{,}
+	            \DataTypeTok{"Role"}\FunctionTok{:} \DecValTok{1}
+	          \FunctionTok{\}}\OtherTok{,}
+	          \FunctionTok{\{}
+	            \DataTypeTok{"Nom"}\FunctionTok{:} \StringTok{"Philip Seymour Hoffman"}\FunctionTok{,}
+	            \DataTypeTok{"Role"}\FunctionTok{:} \DecValTok{2}
+	          \FunctionTok{\}}
+	        \OtherTok{]}
+	    \FunctionTok{\}}
+	  \FunctionTok{\}}\OtherTok{,}
+	  \FunctionTok{\{}
+	    \DataTypeTok{"date"}\FunctionTok{:}
+  	   \FunctionTok{\{}
+  	    \DataTypeTok{"jour"}\FunctionTok{:} \DecValTok{6}\FunctionTok{,}
+  	    \DataTypeTok{"mois"}\FunctionTok{:} \DecValTok{3}\FunctionTok{,}
+  	    \DataTypeTok{"année"}\FunctionTok{:} \DecValTok{2018}
+  	   \FunctionTok{\},}
+  	   \DataTypeTok{"film"}\FunctionTok{:}
+	     \FunctionTok{\{}
+	      \DataTypeTok{"titre"}\FunctionTok{:} \StringTok{"Iron Man 3"}\FunctionTok{,}
+	      \DataTypeTok{"acteurs"}\FunctionTok{:}
+	        \OtherTok{[}
+	          \FunctionTok{\{}
+	            \DataTypeTok{"Nom"}\FunctionTok{:}\StringTok{"Robert Downey Jr."}\FunctionTok{,}
+	            \DataTypeTok{"Role"}\FunctionTok{:} \DecValTok{1}
+	          \FunctionTok{\}}\OtherTok{,}
+	          \FunctionTok{\{}
+	            \DataTypeTok{"Nom"}\FunctionTok{:} \StringTok{"Gwyneth Paltrow"}\FunctionTok{,}
+	            \DataTypeTok{"Role"}\FunctionTok{:} \DecValTok{2}
+	          \FunctionTok{\}}
+	        \OtherTok{]}
+	    \FunctionTok{\}}
+	  \FunctionTok{\}}\OtherTok{]}
+	\FunctionTok{\}}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+\subsubsection{Arbre JSON}\label{header-n35}
+
+\begin{figure}
+\centering
+\includegraphics{/home/james/Documents/HEIG-VD/Cours/SER/Labos/Labo1/SER_Labo1/JSON.png}
+\caption{}
+\end{figure}
+
+\subsection{Conclusion}\label{header-n38}
+
+Ce laboratoire à nécessité de la rigeure lors de la conception de la
+DTD. Les erreurs de systaxe arrivent rapidement et la visibilité de gros
+fichier devient rapidement compliqué.
+
+Nous avons rencontré quelque problème concernant la syntaxe du JSON, il
+est assez rapide d'avoir une virgule ou un accolade qui pose problème et
+les messages d'erreurs ne sont pas toujours très clairs.
+
+\end{document}
